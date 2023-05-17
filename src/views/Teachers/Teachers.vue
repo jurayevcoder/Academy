@@ -19,10 +19,10 @@ toggleModal();
       <input
         type="text"
         placeholder="Izlash.."
-        class="w-[350px] h-[60px] rounded-[40px] pl-20 text-[20px]"
+        class="w-[350px] h-[60px] rounded-[40px] pl-20 text-[20px] hover:border-[#4D44B5] hover:border-2 border-2 border-white"
       />
       <button
-        class="flex justify-center items-center bg-[#4D44B5] text-white rounded-[40px] w-[207px] h-[60px]"
+        class="flex justify-center items-center bg-[#4D44B5] text-white rounded-[40px] w-[207px] h-[60px] focus:ring-4 focus:ring-blue-300 hover:text-[#4D44B5] hover:bg-white hover:border-[#4D44B5] hover:border-2 border-2 border-[#4D44B5]"
       >
         <i class="bx bx-plus text-[50px]"></i>
       </button>
