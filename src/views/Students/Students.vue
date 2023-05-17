@@ -20,8 +20,8 @@ toggleModal();
         : 'hidden'
     "
   >
-    <div class="relative p-4 w-[1475px] h-[753px]">
-      <div class="relative bg-white rounded-[20px] shadow">
+    <div class="relative p-4">
+      <div class="relative bg-white rounded-[20px] shadow-lg w-[1475px] h-[753px]">
         <div
           class="flex justify-between items-center p-4 pl-10 sm:mb-5 bg-[#4D44B5] rounded-t-[20px]"
         >
@@ -170,7 +170,7 @@ toggleModal();
     </div>
 
     <div>
-      <div class="ml-12 mr-10 overflow-auto rounded-xl">
+      <div class="ml-12 mr-10 overflow-auto rounded-xl shadow-lg">
         <table class="w-full text-left text-gray-500">
           <p>Frame</p>
           <thead class="text-xs text-gray-700 bg-white">
