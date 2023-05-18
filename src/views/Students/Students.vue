@@ -17,6 +17,7 @@ const students = reactive({
   group: "",
   login: "",
   password: "",
+  id: "",
 });
 const addStudent = () => {
   const student = {
@@ -27,6 +28,7 @@ const addStudent = () => {
     group: students.group,
     login: students.login,
     password: students.password,
+    id: String(store.LIST.length)
   };
 
   store.ADD(student);
@@ -37,16 +39,18 @@ const addStudent = () => {
     pauseOnHover: true,
   });
 
-  // students.image = "";
-  // students.first_name = "";
-  // students.last_name = "";
-  // students.birthday = "";
-  // students.group = "";
-  // students.login = "";
-  // students.password = "";
+  students.image = "";
+  students.first_name = "";
+  students.last_name = "";
+  students.birthday = "";
+  students.group = "";
+  students.login = "";
+  students.password = "";
+  students.id = "";
 
   toggleModal();
 };
+
 </script>
 
 <template>
@@ -288,7 +292,7 @@ const addStudent = () => {
                 <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">1234</td>
                 <td class="px-4 py-3 text-gray-500 text-[25px]">
                   <button
-                    @click="store.DEL(el.first_name)"
+                    @click="store.DEL(el.id)"
                     class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px] mr-3"
                   >
                     <i class="bx bx-trash"></i>
