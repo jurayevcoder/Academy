@@ -12,7 +12,7 @@ const router = useRouter()
 
 <template>
   <header>
-    <div class="pl-10 pr-10">
+    <div class= " pl-10 pr-10">
       <nav class="flex justify-between items-center">
         <span class="text-[#303972] text-[36px] font-['Poppins'] font-bold">{{ title }}</span>
         <div class="flex gap-5 items-center">

@@ -8,6 +8,7 @@ const modal = ref(false);
 const toggleModal = () => (modal.value = !modal.value);
 
 const students = reactive({
+  image: "",
   first_name: "",
   last_name: "",
   birthday: "",
@@ -20,6 +21,7 @@ const store = studentStore();
 
 const addStudent = () => {
   const student = {
+    image: students.image,
     first_name: students.first_name,
     last_name: students.last_name,
     birthday: students.birthday,
@@ -30,18 +32,19 @@ const addStudent = () => {
 
   store.ADD(student);
 
-  toast.success("successfully added employee !", {
+  toast.success("Successfully!", {
     autoClose: 1000,
     theme: "light",
     pauseOnHover: true,
   });
 
-  students.first_name = "";
-  students.last_name = "";
-  students.birthday = "";
-  students.group = "";
-  students.login = "";
-  students.password = "";
+  // students.image = "";
+  // students.first_name = "";
+  // students.last_name = "";
+  // students.birthday = "";
+  // students.group = "";
+  // students.login = "";
+  // students.password = "";
 
   toggleModal();
 };
@@ -55,7 +58,7 @@ const addStudent = () => {
     aria-hidden="true"
     :class="
       modal
-        ? 'flex bg-[#F3F4FF] fixed z-50 justify-center items-center md:inset-8 ml-[290px] mt-[80px]'
+        ? 'overflow-y-auto flex bg-[rgba(0,0,0,0.4)] overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full'
         : 'hidden'
     "
   >
@@ -85,9 +88,25 @@ const addStudent = () => {
             </svg>
           </button>
         </div>
-        <form @submit.prevent="addStudent">
-          <div class="grid gap-4 m-4 sm:grid-cols-2 mt-10 pb-[200px]">
-            <div class="mb-5">
+        <form @submit.prevent="addStudent" class="flex justify-between">
+          <div class="grid ml-[260px] sm:grid-cols-2 mt-10">
+            <div class="ml-5 left-1 top-1 mt-[84px] absolute">
+            <label
+              for="image"
+              class="block mb-2 mt-10 text-[18px] font-medium text-[#303972]"
+              >Rasmi *</label
+            >
+            <input
+              v-model="students.image"
+              type="text"
+              name="image"
+              id="image"
+              class="bg-[#FFFFFF] border border-[#C1BBEB] text-[#A098AE] text-sm rounded-[5px] w-[200px] h-[200px] p-7"
+              placeholder="Rasm"
+              required=""
+            />
+          </div>
+            <div class="mb-12">
               <label
                 for="first_name"
                 class="block mb-2 text-[18px] font-medium text-[#303972]"
@@ -119,7 +138,7 @@ const addStudent = () => {
                 required=""
               />
             </div>
-            <div class="mb-5">
+            <div class="mb-12">
               <label
                 for="birthday"
                 class="block mb-2 text-[18px] font-medium text-[#303972]"
@@ -179,13 +198,13 @@ const addStudent = () => {
                 required=""
               />
             </div>
+            <button
+              type="submit"
+              class="py-3 w-[150px] ml-[1000px] mt-[150px] text-white bg-[#4D44B5] font-['Poppins'] hover:bg-white hover:text-[#4D44B5] border-2 border-[#4D44B5] focus:ring-4 focus:ring-blue-300 font-medium rounded-[40px] text-[18px]"
+            >
+              QO'SHISH
+            </button>
           </div>
-          <button
-            type="submit"
-            class="text-white bg-[#4D44B5] font-['Poppins'] hover:bg-white hover:text-[#4D44B5] border-2 border-[#4D44B5] focus:ring-4 focus:ring-blue-300 font-medium rounded-[40px] text-[18px] px-5 py-3 mb-10 ml-[1250px]"
-          >
-            QO'SHISH
-          </button>
         </form>
       </div>
     </div>
@@ -249,7 +268,7 @@ const addStudent = () => {
                 <input class="w-[20px] h-[20px]" type="checkbox" />
               </td>
               <th scope="row" class="px-4 py-3 flex items-center gap-5">
-                <img class="w-[40px] rounded-full" src="../../img/myLogo.png" alt="" />
+                <img class="w-[40px] rounded-full" :src="el.image" alt="" />
                 <div class="w-[150px] h-[38px]">
                   <p class="text-[#101828] font-['Abhaya Libre']">
                     {{ el.first_name }} {{ el.last_name }}
