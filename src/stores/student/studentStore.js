@@ -10,5 +10,11 @@ export const studentStore = defineStore('student', () => {
 
   const LIST = computed(() => state.list)
 
-  return { LIST, ADD }
+  const DEL = (id) => {
+    state.list.splice(id, 1)
+    
+    console.log("ishladi");
+  }
+
+  return { LIST, ADD, DEL }
 })

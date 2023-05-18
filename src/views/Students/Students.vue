@@ -91,21 +91,21 @@ const addStudent = () => {
         <form @submit.prevent="addStudent" class="flex justify-between">
           <div class="grid ml-[260px] sm:grid-cols-2 mt-10">
             <div class="ml-5 left-1 top-1 mt-[84px] absolute">
-            <label
-              for="image"
-              class="block mb-2 mt-10 text-[18px] font-medium text-[#303972]"
-              >Rasmi *</label
-            >
-            <input
-              v-model="students.image"
-              type="text"
-              name="image"
-              id="image"
-              class="bg-[#FFFFFF] border border-[#C1BBEB] text-[#A098AE] text-sm rounded-[5px] w-[200px] h-[200px] p-7"
-              placeholder="Rasm"
-              required=""
-            />
-          </div>
+              <label
+                for="image"
+                class="block mb-2 mt-10 text-[18px] font-medium text-[#303972]"
+                >Rasmi *</label
+              >
+              <input
+                v-model="students.image"
+                type="text"
+                name="image"
+                id="image"
+                class="bg-[#FFFFFF] border border-[#C1BBEB] text-[#A098AE] text-sm rounded-[5px] w-[200px] h-[200px] p-7"
+                placeholder="Rasm"
+                required=""
+              />
+            </div>
             <div class="mb-12">
               <label
                 for="first_name"
@@ -268,7 +268,7 @@ const addStudent = () => {
                 <input class="w-[20px] h-[20px]" type="checkbox" />
               </td>
               <th scope="row" class="px-4 py-3 flex items-center gap-5">
-                <img class="w-[40px] rounded-full" :src="el.image" alt="" />
+                <img class="w-[40px] h-[40px] rounded-full" :src="el.image" alt="" />
                 <div class="w-[150px] h-[38px]">
                   <p class="text-[#101828] font-['Abhaya Libre']">
                     {{ el.first_name }} {{ el.last_name }}
