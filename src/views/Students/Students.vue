@@ -1,11 +1,50 @@
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import Header from "../../components/Header.vue";
+import { studentStore } from "../../stores/student/studentStore";
+import { toast } from "vue3-toastify";
 
 const modal = ref(false);
 const toggleModal = () => (modal.value = !modal.value);
 
-toggleModal();
+const students = reactive({
+  first_name: "",
+  last_name: "",
+  birthday: "",
+  group: "",
+  login: "",
+  password: "",
+});
+
+const store = studentStore();
+
+const addStudent = () => {
+  const student = {
+    first_name: students.first_name,
+    last_name: students.last_name,
+    birthday: students.birthday,
+    group: students.group,
+    login: students.login,
+    password: students.password,
+  };
+
+  store.ADD(student);
+
+  toast.success("successfully added employee !", {
+    autoClose: 1000,
+    theme: "light",
+    pauseOnHover: true,
+  });
+
+  students.first_name = "";
+  students.last_name = "";
+  students.birthday = "";
+  students.group = "";
+  students.login = "";
+  students.password = "";
+
+  toggleModal();
+};
 </script>
 
 <template>
@@ -32,7 +71,7 @@ toggleModal();
             class="text-white bg-transparent hover:bg-white hover:text-[#4D44B5] rounded-lg p-1.5"
           >
             <svg
-              aria-hidden="true"
+              aria-hidden=""
               class="w-5 h-5"
               fill="currentColor"
               viewBox="0 0 20 20"
@@ -46,16 +85,19 @@ toggleModal();
             </svg>
           </button>
         </div>
-        <form action="#" @submit.prevent>
+        <form @submit.prevent="addStudent">
           <div class="grid gap-4 m-4 sm:grid-cols-2 mt-10 pb-[200px]">
             <div class="mb-5">
-              <label for="name" class="block mb-2 text-[18px] font-medium text-[#303972]"
+              <label
+                for="first_name"
+                class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Ism *</label
               >
               <input
-                type="name"
-                name="name"
-                id="name"
+                v-model="students.first_name"
+                type="first_name"
+                name="first_name"
+                id="first_name"
                 class="bg-[#FFFFFF] border border-[#C1BBEB] text-[#A098AE] text-sm rounded-[5px] block w-[577px] h-[48px] p-2.5"
                 placeholder="Jahon"
                 required=""
@@ -63,14 +105,15 @@ toggleModal();
             </div>
             <div>
               <label
-                for="sharif"
+                for="last_name"
                 class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Sharif *</label
               >
               <input
-                type="text"
-                name="sharif"
-                id="sharif"
+                v-model="students.last_name"
+                type="last_name"
+                name="last_name"
+                id="last_name"
                 class="bg-[#FFFFFF] border border-[#C1BBEB] text-[#A098AE] text-sm rounded-[5px] block w-[577px] h-[48px] p-2.5"
                 placeholder="Jalilov"
                 required=""
@@ -78,27 +121,29 @@ toggleModal();
             </div>
             <div class="mb-5">
               <label
-                for="cart number"
+                for="birthday"
                 class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Tug'ilgan sana *</label
               >
               <input
+                v-model="students.birthday"
                 type="text"
-                name="cart number"
-                id="cart number"
+                name="birthday"
+                id="birthday"
                 class="bg-[#FFFFFF] border border-[#C1BBEB] text-[#A098AE] text-sm rounded-[5px] block w-[276.5px] h-[48px] p-2.5"
                 placeholder="24 Februari 1997"
                 required=""
               />
             </div>
             <div>
-              <label for="guruh" class="block mb-2 text-[18px] font-medium text-[#303972]"
+              <label for="group" class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Guruhni tanlang *</label
               >
               <input
+                v-model="students.group"
                 type="text"
-                name="guruh"
-                id="guruh"
+                name="group"
+                id="group"
                 class="bg-[#FFFFFF] border border-[#C1BBEB] text-[#A098AE] text-sm rounded-[5px] block w-[577px] h-[48px] p-2.5"
                 placeholder="Guruhni tanlang"
                 required=""
@@ -109,6 +154,7 @@ toggleModal();
                 >Login *</label
               >
               <input
+                v-model="students.login"
                 type="username"
                 name="login"
                 id="login"
@@ -124,6 +170,7 @@ toggleModal();
                 >Parol *</label
               >
               <input
+                v-model="students.password"
                 type="password"
                 name="password"
                 id="password"
@@ -170,10 +217,10 @@ toggleModal();
     </div>
 
     <div>
-      <div class="ml-12 mr-10 overflow-auto rounded-xl shadow-lg">
+      <p class="ml-12">Frame</p>
+      <div class="ml-12 mr-10 overflow-auto bg-white rounded-xl shadow-lg">
         <table class="w-full text-left text-gray-500">
-          <p>Frame</p>
-          <thead class="text-xs text-gray-700 bg-white">
+          <thead class="text-xs text-gray-700">
             <tr class="border-b font-['Abhaya Libre'] text-[#8A92A6]">
               <th scope="col" class="px-4 py-3">
                 <input class="w-[20px] h-[20px]" type="checkbox" />
@@ -194,33 +241,38 @@ toggleModal();
                 ID raqami <i class="bx bx-down-arrow-alt text-[20px]"></i>
               </th>
               <th scope="col" class="px-4 py-3"></th>
-              <th scope="col" class="px-4 py-3"></th>
             </tr>
           </thead>
           <tbody class="bg-white">
-            <tr class="border-b">
+            <tr v-for="(el, i) in store.LIST" :key="i" class="border-b">
               <td class="px-4 py-3">
                 <input class="w-[20px] h-[20px]" type="checkbox" />
               </td>
               <th scope="row" class="px-4 py-3 flex items-center gap-5">
                 <img class="w-[40px] rounded-full" src="../../img/myLogo.png" alt="" />
                 <div class="w-[150px] h-[38px]">
-                  <p class="text-[#101828] font-['Abhaya Libre']">Davlat Jo'rayev</p>
+                  <p class="text-[#101828] font-['Abhaya Libre']">
+                    {{ el.first_name }} {{ el.last_name }}
+                  </p>
                   <p>jurayevcoder@gmail.com</p>
                 </div>
               </th>
-              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">233</td>
+              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">
+                {{ el.group }}
+              </td>
               <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">Developer</td>
-              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">2023.05.17</td>
-              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">1202</td>
+              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">
+                {{ new Date().getDate() }}.{{ new Date().getMonth() }}.{{
+                  new Date().getFullYear()
+                }}
+              </td>
+              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">1234</td>
               <td class="px-4 py-3 text-gray-500 text-[25px]">
                 <button
-                  class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px]"
+                  class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px] mr-3"
                 >
                   <i class="bx bx-trash"></i>
                 </button>
-              </td>
-              <td class="px-4 py-3 text-gray-500 text-[25px]">
                 <button
                   class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px]"
                 >

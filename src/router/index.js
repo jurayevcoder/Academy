@@ -18,7 +18,7 @@ const router = createRouter({
           path: '/teacher',
           name: 'teacher',
           component: () => import('../views/Teachers/Teachers.vue')
-        },
+        }
       ]
     },
     {

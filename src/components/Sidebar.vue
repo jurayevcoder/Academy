@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from "vue";
-import { navLinks } from "../constants/navLInk";
-import { useRouter } from "vue-router";
+import { ref } from 'vue'
+import { navLinks } from '../constants/navLInk'
+import { useRouter } from 'vue-router'
 
-const navlinks = ref(navLinks);
+const navlinks = ref(navLinks)
 
-const router = useRouter();
+const router = useRouter()
 </script>
 <template>
   <div>
@@ -18,7 +18,9 @@ const router = useRouter();
         <div
           class="flex gap-3 items-center justify-center text-[36px] mt-8 mb-10 mr-[50px] font-['Poppins']"
         >
-          <h1 class="flex items-center justify-center bg-[#FB7D5B] w-11 h-11 rounded-[15px] text-white font-bold">
+          <h1
+            class="flex items-center justify-center bg-[#FB7D5B] w-11 h-11 rounded-[15px] text-white font-bold"
+          >
             A
           </h1>
           <h1 class="flex items-center text-white font-bold">Academy</h1>

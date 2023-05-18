@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from "vue";
-import Header from "../../components/Header.vue";
+import { ref } from 'vue'
+import Header from '../../components/Header.vue'
 
-const modal = ref(false);
-const toggleModal = () => (modal.value = !modal.value);
+const modal = ref(false)
+const toggleModal = () => (modal.value = !modal.value)
 
-toggleModal();
+toggleModal()
 </script>
 
 <template>
@@ -16,7 +16,7 @@ toggleModal();
     aria-hidden="true"
     :class="
       modal
-        ? 'flex bg-[#F3F4FF] fixed z-50 justify-center items-center  md:inset-8 ml-[290px] mt-[90px]'
+        ? 'flex bg-[#F3F4FF] fixed z-50 justify-center items-center  md:inset-8 ml-[290px] mt-[80px]'
         : 'hidden'
     "
   >
@@ -62,9 +62,7 @@ toggleModal();
               />
             </div>
             <div>
-              <label
-                for="sharif"
-                class="block mb-2 text-[18px] font-medium text-[#303972]"
+              <label for="sharif" class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Sharif *</label
               >
               <input
@@ -77,7 +75,7 @@ toggleModal();
               />
             </div>
 
-            <div  class="mb-3">
+            <div class="mb-3">
               <label for="login" class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Login *</label
               >
@@ -91,9 +89,7 @@ toggleModal();
               />
             </div>
             <div>
-              <label
-                for="password"
-                class="block mb-2 text-[18px] font-medium text-[#303972]"
+              <label for="password" class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Parol *</label
               >
               <input
@@ -106,9 +102,7 @@ toggleModal();
               />
             </div>
             <div class="mb-3">
-              <label
-                for="malumot"
-                class="block mb-2 text-[18px] font-medium text-[#303972]"
+              <label for="malumot" class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Ma'lumot *</label
               >
               <textarea
@@ -118,9 +112,7 @@ toggleModal();
               ></textarea>
             </div>
             <div class="">
-              <label
-                for="image"
-                class="block mb-2 text-[18px] font-medium text-[#303972]"
+              <label for="image" class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Rasmi *</label
               >
               <input
@@ -134,9 +126,7 @@ toggleModal();
             </div>
 
             <div class="mb-3">
-              <label
-                for="birthday"
-                class="block mb-2 text-[18px] font-medium text-[#303972]"
+              <label for="birthday" class="block mb-2 text-[18px] font-medium text-[#303972]"
                 >Tug'ilgan sana *</label
               >
               <input
@@ -200,26 +190,18 @@ toggleModal();
     </div>
 
     <div class="mx-12 flex gap-16">
-      <div
-        class="w-[338px] h-[352px] shadow-lg p-[16px] text-center bg-[#FFFFFF] rounded-[20px]"
-      >
+      <div class="w-[338px] h-[352px] shadow-lg p-[16px] text-center bg-[#FFFFFF] rounded-[20px]">
         <button
           class="absolute text-[#A098AE] ml-[250px] text-[30px] px-1 mt-2 flex focus:ring-4 focus:ring-blue-300"
         >
           <i class="bx bx-dots-horizontal-rounded"></i>
         </button>
-        <img
-          src="../../img/myLogo.png"
-          alt=""
-          class="w-[120px] rounded-full ml-[88px] mt-2"
-        />
+        <img src="../../img/myLogo.png" alt="" class="w-[120px] rounded-full ml-[88px] mt-2" />
 
         <h1 class="text-[#303972] text-[24px] font-['Poppins'] font-normal mt-4">
           Davlat Jo'rayev
         </h1>
-        <p class="text-[#A098AE] text-[18px] font-['Poppins'] font-normal mt-2">
-          NodeJs and VueJs
-        </p>
+        <p class="text-[#A098AE] text-[18px] font-['Poppins'] font-normal mt-2">NodeJs and VueJs</p>
         <div class="flex justify-between items-center w-[90px] ml-[108px] mt-7">
           <button
             class="text-[20px] text-center bg-[#4D44B5] rounded-full text-white w-[40px] h-[40px] border-2 border-[#4D44B5] hover:bg-white hover:text-[#4D44B5] focus:ring-4 focus:ring-blue-300"
