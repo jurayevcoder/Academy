@@ -66,7 +66,7 @@ const addTeacher = () => {
     "
   >
     <div class="relative p-4">
-      <div class="relative bg-white rounded-[20px] shadow-lg w-[1475px] h-[900px]">
+      <div class="relative bg-[#F3F4FF] rounded-[20px] shadow-lg w-[1475px] h-[830px]">
         <div
           class="flex justify-between items-center p-4 pl-10 sm:mb-5 bg-[#4D44B5] rounded-t-[20px]"
         >
@@ -152,7 +152,7 @@ const addTeacher = () => {
                 name="password"
                 id="password"
                 class="bg-[#FFFFFF] border border-[#C1BBEB] text-[#A098AE] text-sm rounded-[5px] block w-[617px] h-[48px] p-2.5"
-                placeholder="******************"
+                placeholder="*********"
                 required=""
               />
             </div>
@@ -218,7 +218,7 @@ const addTeacher = () => {
           </div>
           <button
             type="submit"
-            class="text-white bg-[#4D44B5] font-['Poppins'] hover:bg-white hover:text-[#4D44B5] border-2 border-[#4D44B5] focus:ring-4 focus:ring-blue-300 font-medium rounded-[40px] text-[18px] px-5 py-3 mb-10 ml-[1250px] mt-[100px]"
+            class="absolute text-white bg-[#4D44B5] font-['Poppins'] hover:bg-white hover:text-[#4D44B5] border-2 border-[#4D44B5] focus:ring-4 focus:ring-blue-300 font-medium rounded-[40px] text-[18px] px-5 py-3 right-0 mr-20 mt-16"
           >
             QO'SHISH
           </button>
@@ -232,91 +232,93 @@ const addTeacher = () => {
   <!-- ----------------------------------------------- Teachers Start ------------------------------------------- -->
 
   <section class="bg-[#F3F4FF] h-[100vh]">
-    <div class="pt-11 pl-3">
-      <Header :title="`O'qituvchilar`" />
-    </div>
-    <div class="pl-3 pt-5 flex justify-between items-center m-10">
-      <i class="bx bx-search absolute ml-10 text-[25px] text-[#4D44B5]"></i>
-      <input
-        type="text"
-        placeholder="Izlash.."
-        class="w-[350px] h-[60px] rounded-[40px] pl-20 text-[20px] hover:border-[#4D44B5] hover:border-2 border-2 border-white"
-      />
-      <button
-        @click="toggleModal"
-        type="button"
-        class="flex justify-center items-center bg-[#4D44B5] text-white rounded-[40px] w-[207px] h-[60px] focus:ring-4 focus:ring-blue-300 hover:text-[#4D44B5] hover:bg-white hover:border-[#4D44B5] hover:border-2 border-2 border-[#4D44B5]"
-      >
-        <i class="bx bx-plus text-[50px]"></i>
-      </button>
-    </div>
-
-    <div class="px-12 flex flex-wrap gap-10 bg-[#F3F4FF]">
-      <div
-        v-for="(el, i) in store.LIST"
-        :key="i"
-        class="w-[338px] h-[352px] shadow-lg p-[16px] text-center bg-[#FFFFFF] rounded-[20px]"
-      >
-        <button
-          class="absolute text-[#A098AE] ml-[250px] text-[30px] px-1 mt-2 flex focus:ring-4 focus:ring-blue-300"
-        >
-          <i class="bx bx-dots-horizontal-rounded"></i>
-        </button>
-        <img
-          class="w-[120px] h-[120px] rounded-full ml-[88px] mt-2"
-          :src="el.image"
-          alt=""
+    <div class="container ml-14 h-full">
+      <div class="pt-11 pl-3">
+        <Header :title="`O'qituvchilar`" />
+      </div>
+      <div class="pl-3 pt- flex justify-between items-center m-10 mb-16">
+        <i class="bx bx-search absolute ml-10 text-[25px] text-[#4D44B5]"></i>
+        <input
+          type="text"
+          placeholder="Izlash.."
+          class="w-[350px] h-[60px] rounded-[40px] pl-20 text-[20px] hover:border-[#4D44B5] hover:border-2 border-2 border-white"
         />
-
-        <h1 class="text-[#303972] text-[24px] font-['Poppins'] font-normal mt-4">
-          {{ el.first_name }} {{ el.last_name }}
-        </h1>
-        <p class="text-[#A098AE] text-[18px] font-['Poppins'] font-normal mt-2">
-          NodeJs and VueJs
-        </p>
-        <div class="flex justify-between items-center w-[90px] ml-[108px] mt-7">
-          <button
-            class="text-[20px] text-center bg-[#4D44B5] rounded-full text-white w-[40px] h-[40px] border-2 border-[#4D44B5] hover:bg-white hover:text-[#4D44B5] focus:ring-4 focus:ring-blue-300"
-          >
-            <i class="bx bx-phone"></i>
-          </button>
-          <button
-            class="text-[20px] bg-[#4D44B5] rounded-full text-white w-[40px] h-[40px] border-2 border-[#4D44B5] hover:bg-white hover:text-[#4D44B5] focus:ring-4 focus:ring-blue-300"
-          >
-            <i class="bx bx-envelope"></i>
-          </button>
-        </div>
+        <button
+          @click="toggleModal"
+          type="button"
+          class="flex justify-center items-center bg-[#4D44B5] text-white rounded-[40px] w-[207px] h-[60px] focus:ring-4 focus:ring-blue-300 hover:text-[#4D44B5] hover:bg-white hover:border-[#4D44B5] hover:border-2 border-2 border-[#4D44B5]"
+        >
+          <i class="bx bx-plus text-[50px]"></i>
+        </button>
       </div>
 
-      <div class="mt-5 mb-10 ml-[1330px]">
-        <nav>
-          <ul class="flex rounded-full gap-3 items-center">
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center py-1 px-2 text-[#A098AE] hover:text-[#4D44B5] focus:ring-2 focus:ring-blue-300 focus:rounded-full"
-              >
-                <span class=""><i class="bx bxs-left-arrow"></i></span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="w-[50px] h-[50px] flex items-center justify-center text-[18px] bg-[#4D44B5] py-2 px-3 rounded-full leading-tight text-white"
-                >1</a
-              >
-            </li>
+      <div class="px-12 flex flex-wrap gap-7 bg-[#F3F4FF]">
+        <div
+          v-for="(el, i) in store.LIST"
+          :key="i"
+          class="w-[338px] h-[352px] shadow-lg p-[16px] text-center bg-[#FFFFFF] rounded-[20px]"
+        >
+          <button
+            class="absolute text-[#A098AE] ml-[250px] text-[30px] px-1 mt-2 flex focus:ring-4 focus:ring-blue-300"
+          >
+            <i class="bx bx-dots-horizontal-rounded"></i>
+          </button>
+          <img
+            class="w-[120px] h-[120px] rounded-full ml-[88px] mt-2"
+            :src="el.image"
+            alt=""
+          />
 
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center py-1 px-2 text-[#A098AE] hover:text-[#4D44B5] focus:ring-2 focus:ring-blue-300 focus:rounded-full"
-              >
-                <span class=""><i class="bx bxs-right-arrow"></i></span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+          <h1 class="text-[#303972] text-[24px] font-['Poppins'] font-normal mt-4">
+            {{ el.first_name }} {{ el.last_name }}
+          </h1>
+          <p class="text-[#A098AE] text-[18px] font-['Poppins'] font-normal mt-2">
+            {{ el.group }}
+          </p>
+          <div class="flex justify-between items-center w-[90px] ml-[108px] mt-7">
+            <button
+              class="text-[20px] text-center bg-[#4D44B5] rounded-full text-white w-[40px] h-[40px] border-2 border-[#4D44B5] hover:bg-white hover:text-[#4D44B5] focus:ring-4 focus:ring-blue-300"
+            >
+              <i class="bx bx-phone"></i>
+            </button>
+            <button
+              class="text-[20px] bg-[#4D44B5] rounded-full text-white w-[40px] h-[40px] border-2 border-[#4D44B5] hover:bg-white hover:text-[#4D44B5] focus:ring-4 focus:ring-blue-300"
+            >
+              <i class="bx bx-envelope"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-5 mb-10 ml-[1330px]">
+          <nav>
+            <ul class="flex rounded-full gap-3 items-center">
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center justify-center py-1 px-2 text-[#A098AE] hover:text-[#4D44B5] focus:ring-2 focus:ring-blue-300 focus:rounded-full"
+                >
+                  <span class=""><i class="bx bxs-left-arrow"></i></span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="w-[50px] h-[50px] flex items-center justify-center text-[18px] bg-[#4D44B5] py-2 px-3 rounded-full leading-tight text-white"
+                  >1</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center justify-center py-1 px-2 text-[#A098AE] hover:text-[#4D44B5] focus:ring-2 focus:ring-blue-300 focus:rounded-full"
+                >
+                  <span class=""><i class="bx bxs-right-arrow"></i></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </section>

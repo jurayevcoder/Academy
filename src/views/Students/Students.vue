@@ -7,7 +7,6 @@ import { toast } from "vue3-toastify";
 const modal = ref(false);
 const toggleModal = () => (modal.value = !modal.value);
 
-
 const store = studentStore();
 
 const students = reactive({
@@ -18,7 +17,6 @@ const students = reactive({
   group: "",
   login: "",
   password: "",
-
 });
 const addStudent = () => {
   const student = {
@@ -64,7 +62,7 @@ const addStudent = () => {
     "
   >
     <div class="relative p-4">
-      <div class="relative bg-white rounded-[20px] shadow-lg w-[1475px] h-[753px]">
+      <div class="relative rounded-[20px] shadow-lg w-[1475px] h-[753px] bg-[#F3F4FF]">
         <div
           class="flex justify-between items-center p-4 pl-10 sm:mb-5 bg-[#4D44B5] rounded-t-[20px]"
         >
@@ -89,7 +87,7 @@ const addStudent = () => {
             </svg>
           </button>
         </div>
-        <form @submit.prevent="addStudent" class="flex justify-between">
+        <form @submit.prevent="addStudent" class="flex justify-between bg-[#F3F4FF]">
           <div class="grid ml-[260px] sm:grid-cols-2 mt-10">
             <div class="ml-5 left-1 top-1 mt-[84px] absolute">
               <label
@@ -216,120 +214,123 @@ const addStudent = () => {
   <!-- --------------------------------------------- Students Start ------------------------------- -->
 
   <section class="bg-[#F3F4FF] h-[100vh]">
-    <div class="pt-11 pl-3">
-      <Header :title="`O'quvchilar`" />
-    </div>
+    <div class="container ml-14 h-full">
+      <div class="pt-11 pl-3">
+        <Header :title="`O'quvchilar`" />
+      </div>
 
-    <div class="pl-3 flex justify-between items-center m-10">
-      <i class="bx bx-search absolute ml-10 text-[25px] text-[#4D44B5]"></i>
-      <input
-        type="text"
-        placeholder="Izlash.."
-        class="w-[350px] h-[60px] rounded-[40px] pl-20 text-[20px] hover:border-[#4D44B5] hover:border-2 border-2 border-white"
-      />
-      <button
-        @click="toggleModal"
-        type="button"
-        class="flex justify-center items-center bg-[#4D44B5] text-white rounded-[40px] w-[207px] h-[60px] focus:ring-4 focus:ring-blue-300 hover:text-[#4D44B5] hover:bg-white hover:border-2 border-2 border-[#4D44B5]"
-      >
-        <i class="bx bx-plus text-[50px]"></i>
-      </button>
-    </div>
+      <div class="pl-3 flex justify-between items-center m-10">
+        <i class="bx bx-search absolute ml-10 text-[25px] text-[#4D44B5]"></i>
+        <input
+          type="text"
+          placeholder="Izlash.."
+          class="w-[350px] h-[60px] rounded-[40px] pl-20 text-[20px] hover:border-[#4D44B5] hover:border-2 border-2 border-white"
+        />
+        <button
+          @click="toggleModal"
+          type="button"
+          class="flex justify-center items-center bg-[#4D44B5] text-white rounded-[40px] w-[207px] h-[60px] focus:ring-4 focus:ring-blue-300 hover:text-[#4D44B5] hover:bg-white hover:border-2 border-2 border-[#4D44B5]"
+        >
+          <i class="bx bx-plus text-[50px]"></i>
+        </button>
+      </div>
 
-    <div class="bg-[#F3F4FF] pb-10">
-      <p class="ml-12">Frame</p>
-      <div class="ml-12 mr-10 overflow-auto bg-white rounded-xl shadow-lg">
-        <table class="w-full text-left text-gray-500">
-          <thead class="text-xs text-gray-700">
-            <tr class="border-b font-['Abhaya Libre'] text-[#8A92A6]">
-              <th scope="col" class="px-4 py-3">
-                <input class="w-[20px] h-[20px]" type="checkbox" />
-              </th>
-              <th scope="col" class="px-4 py-3">
-                I.F.O <i class="bx bx-down-arrow-alt text-[20px]"></i>
-              </th>
-              <th scope="col" class="px-4 py-3">
-                Guruh raqami <i class="bx bx-down-arrow-alt text-[20px]"></i>
-              </th>
-              <th scope="col" class="px-4 py-3">
-                Bosqich <i class="bx bx-down-arrow-alt text-[20px]"></i>
-              </th>
-              <th scope="col" class="px-4 py-3">
-                Qo'shilgan sana <i class="bx bx-down-arrow-alt text-[20px]"></i>
-              </th>
-              <th scope="col" class="px-4 py-3">
-                ID raqami <i class="bx bx-down-arrow-alt text-[20px]"></i>
-              </th>
-              <th scope="col" class="px-4 py-3"></th>
-            </tr>
-          </thead>
-          <tbody class="bg-white">
-            <tr v-for="(el, i) in store.LIST" :key="i" class="border-b">
-              <td class="px-4 py-3">
-                <input class="w-[20px] h-[20px]" type="checkbox" />
-              </td>
-              <th scope="row" class="px-4 py-3 flex items-center gap-5">
-                <img class="w-[40px] h-[40px] rounded-full" :src="el.image" alt="" />
-                <div class="w-[150px] h-[38px]">
-                  <p class="text-[#101828] font-['Abhaya Libre']">
-                    {{ el.first_name }} {{ el.last_name }}
-                  </p>
-                  <p>jurayevcoder@gmail.com</p>
-                </div>
-              </th>
-              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">
-                {{ el.group }}
-              </td>
-              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">Developer</td>
-              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">
-                {{ new Date().getDate() }}.{{ new Date().getMonth() }}.{{
-                  new Date().getFullYear()
-                }}
-              </td>
-              <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">1234</td>
-              <td class="px-4 py-3 text-gray-500 text-[25px]">
-                <button @click="store.DEL(el.first_name)"
-                  class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px] mr-3"
+      <div class="bg-[#F3F4FF] pb-10">
+        <p class="ml-12">Frame</p>
+        <div class="ml-12 mr-10 overflow-auto bg-white rounded-xl shadow-lg">
+          <table class="w-full text-left text-gray-500">
+            <thead class="text-xs text-gray-700">
+              <tr class="border-b font-['Abhaya Libre'] text-[#8A92A6]">
+                <th scope="col" class="px-4 py-3">
+                  <input class="w-[20px] h-[20px]" type="checkbox" />
+                </th>
+                <th scope="col" class="px-4 py-3">
+                  I.F.O <i class="bx bx-down-arrow-alt text-[20px]"></i>
+                </th>
+                <th scope="col" class="px-4 py-3">
+                  Guruh raqami <i class="bx bx-down-arrow-alt text-[20px]"></i>
+                </th>
+                <th scope="col" class="px-4 py-3">
+                  Bosqich <i class="bx bx-down-arrow-alt text-[20px]"></i>
+                </th>
+                <th scope="col" class="px-4 py-3">
+                  Qo'shilgan sana <i class="bx bx-down-arrow-alt text-[20px]"></i>
+                </th>
+                <th scope="col" class="px-4 py-3">
+                  ID raqami <i class="bx bx-down-arrow-alt text-[20px]"></i>
+                </th>
+                <th scope="col" class="px-4 py-3"></th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr v-for="(el, i) in store.LIST" :key="i" class="border-b">
+                <td class="px-4 py-3">
+                  <input class="w-[20px] h-[20px]" type="checkbox" />
+                </td>
+                <th scope="row" class="px-4 py-3 flex items-center gap-5">
+                  <img class="w-[40px] h-[40px] rounded-full" :src="el.image" alt="" />
+                  <div class="w-[150px] h-[38px]">
+                    <p class="text-[#101828] font-['Abhaya Libre']">
+                      {{ el.first_name }} {{ el.last_name }}
+                    </p>
+                    <p>jurayevcoder@gmail.com</p>
+                  </div>
+                </th>
+                <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">
+                  {{ el.group }}
+                </td>
+                <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">Developer</td>
+                <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">
+                  {{ new Date().getDate() }}.{{ new Date().getMonth() }}.{{
+                    new Date().getFullYear()
+                  }}
+                </td>
+                <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">1234</td>
+                <td class="px-4 py-3 text-gray-500 text-[25px]">
+                  <button
+                    @click="store.DEL(el.first_name)"
+                    class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px] mr-3"
+                  >
+                    <i class="bx bx-trash"></i>
+                  </button>
+                  <button
+                    class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px]"
+                  >
+                    <i class="bx bxs-edit"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <nav class="border-b bg-white px-4 py-3" aria-label="Table navigation">
+            <ul class="flex justify-between items-center">
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-[8px] border border-gray-300 hover:border-[#4D44B5] hover:text-[#4D44B5] focus:ring-2 focus:ring-blue-300"
                 >
-                  <i class="bx bx-trash"></i>
-                </button>
-                <button
-                  class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px]"
+                  <span>avvalgisi</span>
+                </a>
+              </li>
+
+              <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                Sahifa
+                <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
+                dan
+                <span class="font-semibold text-gray-900 dark:text-white">1000</span>
+              </span>
+
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-[8px] border border-gray-300 hover:border-[#4D44B5] hover:text-[#4D44B5] focus:ring-2 focus:ring-blue-300"
                 >
-                  <i class="bx bxs-edit"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <nav class="border-b bg-white px-4 py-3" aria-label="Table navigation">
-          <ul class="flex justify-between items-center">
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-[8px] border border-gray-300 hover:border-[#4D44B5] hover:text-[#4D44B5] focus:ring-2 focus:ring-blue-300"
-              >
-                <span>avvalgisi</span>
-              </a>
-            </li>
-
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-              Sahifa
-              <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
-              dan
-              <span class="font-semibold text-gray-900 dark:text-white">1000</span>
-            </span>
-
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-[8px] border border-gray-300 hover:border-[#4D44B5] hover:text-[#4D44B5] focus:ring-2 focus:ring-blue-300"
-              >
-                <span>keyingisi</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+                  <span>keyingisi</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </section>
