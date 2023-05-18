@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { navLinks } from "../../constants/navLInk.js";
 import { useRouter } from "vue-router";
-import Sidebar from "../../components/SidebarChaild.vue";
+import SidebarChaild from "../../components/SidebarChaild.vue";
 import { teacherStore } from "../../stores/teacher/teacherStore";
 import { studentStore } from "../../stores/student/studentStore";
 
@@ -14,7 +14,7 @@ const router = useRouter();
 
 const store = teacherStore();
 
-// const stores = studentStore()
+const stores = studentStore()
 </script>
 <template>
   <header class="bg-[#F3F4FF]">
@@ -32,22 +32,22 @@ const store = teacherStore();
       </nav>
     </div>
   </header>
-  <main class="pl-20 bg-[#F3F4FF] pt-10">
+  <main class="pl-20 bg-[#F3F4FF] pt-10 pb-10">
     <section>
-      <Sidebar />
+      <SidebarChaild />
       <div class="w-[1080px] h-[172px] bg-white rounded-[20px] shadow-lg flex justify-between items-center px-10">
       <div class="flex items-center gap-6">
         <i class='bx bxs-graduation bg-[#4D44B5] text-white w-[72px] h-[72px] rounded-[40px] flex justify-center items-center text-[40px]' ></i>
         <div class=" text-left">
         <p class="text-[#A098AE] text-[18px] font-normal font-['Poppins']">O'quvchilar</p>
-        <p class="text-[#303972] text-[36px] font-bold font-['Poppins']">932</p>
+        <p class="text-[#303972] text-[36px] font-bold font-['Poppins']">{{ stores.LIST.length }}</p>
         </div>
       </div>
       <div class="flex items-center gap-4">
         <i class='bx bxs-user-badge bg-[#FB7D5B] text-white w-[72px] h-[72px] rounded-[40px] flex justify-center items-center text-[40px]' ></i>
         <div class=" text-left">
         <p class="text-[#A098AE] text-[18px] font-normal font-['Poppins']">O'qituvchilar</p>
-        <p class="text-[#303972] text-[36px] font-bold font-['Poppins']">754</p>
+        <p class="text-[#303972] text-[36px] font-bold font-['Poppins']">{{ store.LIST.length }}</p>
         </div>
       </div>
       <div class="flex items-center gap-4">
@@ -66,8 +66,8 @@ const store = teacherStore();
       </div>
       </div>
 
-      <div class="overflow-auto bg-white rounded-[20px] shadow-lg mt-10 pt-20 mr-[470px]">
-        <table class="w-[1080px] text-left text-gray-500">
+      <div class="overflow-auto bg-white rounded-[20px] shadow-lg mt-10 pt-20 mr-[455px] w-[1080px]">
+        <table class="w-[1080px] text-left">
           <thead class="text-gray-700">
           <span class=" absolute font-['Poppins'] text-[#303972] font-semibold ml-10 top-0 mt-96 text-[24px]">O’qituvchilar:</span>
           </thead>

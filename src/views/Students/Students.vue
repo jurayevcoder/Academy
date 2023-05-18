@@ -7,6 +7,9 @@ import { toast } from "vue3-toastify";
 const modal = ref(false);
 const toggleModal = () => (modal.value = !modal.value);
 
+
+const store = studentStore();
+
 const students = reactive({
   image: "",
   first_name: "",
@@ -15,10 +18,8 @@ const students = reactive({
   group: "",
   login: "",
   password: "",
+
 });
-
-const store = studentStore();
-
 const addStudent = () => {
   const student = {
     image: students.image,
@@ -235,7 +236,7 @@ const addStudent = () => {
       </button>
     </div>
 
-    <div>
+    <div class="bg-[#F3F4FF] pb-10">
       <p class="ml-12">Frame</p>
       <div class="ml-12 mr-10 overflow-auto bg-white rounded-xl shadow-lg">
         <table class="w-full text-left text-gray-500">
@@ -287,7 +288,7 @@ const addStudent = () => {
               </td>
               <td class="px-4 py-3 text-[#232D42] font-['Abhaya Libre']">1234</td>
               <td class="px-4 py-3 text-gray-500 text-[25px]">
-                <button
+                <button @click="store.DEL(el.first_name)"
                   class="w-[40px] focus:ring-4 focus:ring-blue-300 border-white border-2 hover:border-2 hover:border-[#4D44B5] rounded-[8px] mr-3"
                 >
                   <i class="bx bx-trash"></i>

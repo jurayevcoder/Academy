@@ -6,14 +6,19 @@ export const studentStore = defineStore('student', () => {
 
   const ADD = (data) => {
     state.list.push(data)
+    console.log(state.list);
   }
 
   const LIST = computed(() => state.list)
 
-  const DEL = (id) => {
-    state.list.splice(id, 1)
-    
-    console.log("ishladi");
+  const DEL = (name) => {
+    for (let i = 0; i < state.list.length; i++){
+      if (state.list[i].first_name === name){
+         state.list.splice(i, 1)
+         console.log(`delete - ${name}`);
+      }
+    }
+    console.log(name);
   }
 
   return { LIST, ADD, DEL }
