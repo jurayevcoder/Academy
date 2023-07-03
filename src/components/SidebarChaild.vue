@@ -11,7 +11,7 @@ const router = useRouter();
   <div>
     <aside
       id="default-sidebar"
-      class="fixed top-0 right-0 z-40 w-[395px] h-screen transition-transform -translate-x-full sm:translate-x-0 bg-white"
+      class="fixed top-0 right-0 z-40 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-white"
       aria-label="SidebarChaild"
     >
       <div class="flex gap-5 items-center justify-center pt-11">

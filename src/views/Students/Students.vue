@@ -217,8 +217,8 @@ const addStudent = () => {
 
   <!-- --------------------------------------------- Students Start ------------------------------- -->
 
-  <section class="bg-[#F3F4FF] h-[100vh]">
-    <div class="container ml-14 h-full">
+  <section class="bg-[#F3F4FF]">
+    <div class="container ml-14 h-full overflow-x-hidden">
       <div class="pt-11 pl-3">
         <Header :title="`O'quvchilar`" />
       </div>
